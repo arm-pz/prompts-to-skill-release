@@ -10,9 +10,9 @@ than its results.
 
 Works with Qoder, Claude Code and other agents that load skills.
 
-**Heads up before you install:** precondition 1 checks the skill against `tune-skill`'s validator, and
-`tune-skill` is not published as an `arm-pz` repo — installing this one does not give it to you. Without
-it you can still run steps 3–7, but step 1's gate check has nothing to read.
+**Heads up before you install:** precondition 1 checks the skill against `tune-skill`'s validator, so
+install [`tune-skill`](https://github.com/arm-pz/tune-skill) alongside this one — this repo does not
+carry it. Without it you can still run steps 3–7, but step 1's gate check has nothing to read.
 
 ## Install
 
