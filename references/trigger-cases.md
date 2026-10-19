@@ -40,10 +40,11 @@ Spans the family: "these prompts → a skill → on GitHub" runs `prompts-to-ski
 then `prompts-to-skill-release`. The release skill's precondition 2 refuses to proceed when a gate
 is only "written, not run", so the order is enforced by the preconditions, not by the descriptions.
 
-## Recommended fix, not applied
+## Fix applied 2026-10-19
 
-Narrow the "publish to GitHub" trigger to the shape that makes it unambiguous: a skill folder in
-context that the user wants packaged. As written, the phrase is claimed by four skills at once.
+The trigger now reads "the user has a finished skill folder in context and says ...", and a bare
+"publish this to GitHub" with no skill to package is named as not this job. Pushing existing clones
+went to `upstream-check` and listing copy to `findable`, both named in the "Not for" clause.
 
 ## Not verified
 
