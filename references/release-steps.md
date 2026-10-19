@@ -2,7 +2,7 @@
 
 ## Test execution
 
-- Source of cases: `evals/evals.json` (skill-creator format) and the tune-skill test-case table (at least eight cases, including boundary pairs).
+- Source of cases: `evals/evals.json` (`skill_name` plus an `evals` list of prompts) and the tune-skill test-case table (at least eight cases, including boundary pairs).
 - For each case record: id, message, expected skill or mode, result (pass, fail, reviewed-only, not-run), and a one-line note.
 - Pass condition is the one written in the table. Do not invent a looser one.
 - Counts go in the report. If any case is not-run, say so in the first line of the report.
