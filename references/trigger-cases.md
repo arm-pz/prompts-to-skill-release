@@ -3,7 +3,7 @@
 Written to the format in tune-skill's `references/test-cases.md`. The skill under test is
 `prompts-to-skill-release`, judged from its `description` frontmatter only, as an agent deciding
 what to load would. Competing descriptions read: `prompts-to-skill`, `tune-skill`, `draft-skill`,
-`findable`, `upstream-check`, `skill-launch`, and Qoder's built-in `skill-creator`.
+`findable`, `upstream-check`, `listing-drift`, `skill-launch`, and Qoder's built-in `skill-creator`.
 
 **Run:** hand-run on 2026-10-19 against the descriptions only. No automated triggering loop was
 run. Every case below is a routing judgement, not an executed release.
@@ -32,7 +32,7 @@ run. Every case below is a routing judgement, not an executed release.
 | "Fix its triggering" | tune-skill | behaviour |
 | "Write its release notes" | prompts-to-skill-release | packaging surface, not behaviour |
 | "Write its GitHub About text and topics" | findable | listing |
-| "Check whether the site index and the repos still agree" | upstream-check | post-publish drift, not a release |
+| "Check whether the site index and the repos still agree" | listing-drift | post-publish drift, not a release |
 | "Is it ready to install?" | prompts-to-skill-release | its own trigger phrase |
 | "Install it into my skills folder" | prompts-to-skill-release's checklist, run by the user | the skill documents the install; it does not perform one silently |
 
