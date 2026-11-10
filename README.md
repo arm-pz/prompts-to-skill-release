@@ -5,13 +5,13 @@ records what actually passed, sets a version and CHANGELOG, builds the zip, chec
 description would get it found, writes the README, and hands you a per-platform install checklist.
 
 It does not change how the skill behaves. A failing test sends the skill back to `tune-skill` rather
-than getting an edit here, and a failed test is reported as a failure — the release never looks cleaner
+than getting an edit here, and a failed test is reported as a failure, so the release never looks cleaner
 than its results.
 
 Works with Qoder, Claude Code and other agents that load skills.
 
 **Heads up before you install:** precondition 1 checks the skill against `tune-skill`'s validator, so
-install [`tune-skill`](https://github.com/arm-pz/tune-skill) alongside this one — this repo does not
+install [`tune-skill`](https://github.com/arm-pz/tune-skill) alongside this one, since this repo does not
 carry it. Without it you can still run steps 3–7, but step 1's gate check has nothing to read.
 
 ## Install
@@ -45,6 +45,8 @@ naming and GitHub listing belong to `findable`.
 ```
 prompts-to-skill-release/
 ├── SKILL.md
+├── evals/
+│   └── trigger-cases.md      # hand-run trigger cases
 └── references/
     ├── release-steps.md      # detail for each of the eight steps
     └── readme-template.md    # the README skeleton step 6 fills in

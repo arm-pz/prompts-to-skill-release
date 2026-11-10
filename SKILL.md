@@ -1,6 +1,6 @@
 ---
 name: prompts-to-skill-release
-description: Release a skill built from prompts. Use after prompts-to-skill has drafted and tuned a skill, to package it as a zip, run its test cases and record real results, check install and discovery in a fresh session, write the repo README and version, and hand the user an install checklist. Use whenever the user has a finished skill folder in context and says "package this skill", "release it", "ship it", "make it installable", "run the tests on this skill", or "is it ready to install", even if they don't name a step. A bare "publish this to GitHub" with no skill to package is not this job. Not for drafting or tuning a skill (use prompts-to-skill or tune-skill), for repo discoverability copy (use findable), or for pushing existing clones (use upstream-check).
+description: Release a finished skill. Use after prompts-to-skill, or draft-skill followed by tune-skill, has drafted and tuned a skill, to package it as a zip, run its test cases and record real results, check install and discovery in a fresh session, write the repo README and version, and hand the user an install checklist. Use whenever the user has a finished skill folder in context and says "package this skill", "release it", "ship it", "make it installable", "run the tests on this skill", or "is it ready to install", even if they don't name a step. A bare "publish this to GitHub" with no skill to package is not this job. Not for drafting or tuning a skill (use prompts-to-skill or tune-skill), for repo discoverability copy (use findable), or for pushing existing clones (use upstream-check).
 version: 1.0.0
 ---
 
@@ -13,18 +13,18 @@ This skill takes a finished draft and makes it installable, tested and documente
 Stop and report if any of these fail:
 
 1. The skill folder exists, its name matches the `name` field and H1, and `check_skill.py` shows no FAIL.
-2. `prompts-to-skill` has recorded its Gate A and Gate B results. A gate marked "written, not run" is a warning, not a pass.
+2. The skill has recorded results from one of the two routes that produce it. From `prompts-to-skill`: its Gate A and Gate B results. From `draft-skill` and `tune-skill`: the validator output and a trigger-case table with a result on each row. Cases or a gate marked "written, not run" are a warning, not a pass.
 3. The user has said what they want: a zip only, a GitHub repo, or both.
 
 ## Steps
 
-**1. Test.** Run each case in `evals/evals.json` and each row in the tune-skill test-case table. Record pass, fail, or not-run for each. Never mark a case pass without running or reasoning through it against the real description. If you can only reason, say "reviewed, not executed".
+**1. Test.** Run each case in `evals/evals.json` and each row in the test-case table (`evals/trigger-cases.md`). Record pass, fail, or not-run for each. Never mark a case pass without running or reasoning through it against the real description. If you can only reason, say "reviewed, not executed".
 
-**2. Fix or return.** For each failure, decide whether the fix is in the description (go back to tune-skill) or the body (go back to tune-skill as well). Do not edit the skill in this step. Re-run only the affected cases after tune-skill returns.
+**2. Fix or return.** Send each failure back to tune-skill with the failing case, whether the fix is in the description or the body. If the failure can only be fixed in a sibling skill, record it as a known failure and name the sibling. Do not edit the skill in this step. Re-run only the affected cases after tune-skill returns.
 
 **3. Version.** Set `version: 0.1.0` in the frontmatter if there is none, and keep any existing version field unchanged. Add a `CHANGELOG.md` with one entry: what the skill does, the date, and the test results.
 
-**4. Package.** Build the zip with the skill folder as the top-level entry, so unzipping gives `skill-name/SKILL.md`. Exclude `.DS_Store`, `__pycache__`, and any `evals/` results that contain personal data. Verify the archive with a listing.
+**4. Package.** If the skill will be published, add the licence the user chooses and, for Claude Code plugin installs, a `.claude-plugin/plugin.json` whose `version` equals the frontmatter's. Build the zip with the skill folder as the top-level entry, so unzipping gives `skill-name/SKILL.md`. Exclude `.DS_Store`, `__pycache__`, and any `evals/` results that contain personal data. Verify the archive with a listing.
 
 **5. Discovery check.** Write three prompts that should trigger the skill and one that should not, using the user's own words. Judge each by reading the description. Record the result. Do not claim the skill is discoverable in a live session unless you tested it in one.
 
