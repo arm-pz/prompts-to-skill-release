@@ -2,7 +2,7 @@
 
 ## Test execution
 
-- Source of cases: `evals/evals.json` (`skill_name` plus an `evals` list of prompts) and the tune-skill test-case table (at least eight cases, including boundary pairs).
+- Source of cases: `evals/evals.json` (`skill_name` plus an `evals` list of prompts) and the test-case table in `evals/trigger-cases.md` (at least eight cases, including boundary pairs).
 - For each case record: id, message, expected skill or mode, result (pass, fail, reviewed-only, not-run), and a one-line note.
 - Pass condition is the one written in the table. Do not invent a looser one.
 - Counts go in the report. If any case is not-run, say so in the first line of the report.
@@ -14,7 +14,7 @@
 - CHANGELOG entry format:
 
       ## 0.1.0 (YYYY-MM-DD)
-      - Initial release from prompts: N prompts, M test cases.
+      - Initial release: built from N prompts (or from an idea), M test cases.
       - Tests: X pass, Y fail, Z reviewed-only.
 
 ## Packaging
@@ -22,6 +22,7 @@
 - Archive root is the skill folder. Example: `prompts-to-skill.zip` contains `prompts-to-skill/SKILL.md`.
 - Exclude `.DS_Store`, `__pycache__`, `*.pyc`, and any file under `evals/` that holds real user data.
 - Verify with `unzip -l` and confirm the SKILL.md path.
+- Files a published repo carries beside the skill: `LICENSE` (ask the user which; do not pick one for them) and, for Claude Code plugin installs, `.claude-plugin/plugin.json` with `name`, `version`, `description`, `author` and `repository`. Its `version` must equal the frontmatter `version`. Two version fields that disagree leave the reader unable to tell which release they have.
 
 ## Discovery check
 
